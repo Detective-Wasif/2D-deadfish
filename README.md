@@ -54,4 +54,6 @@ But sadly IP has hit the EOF token. So the program terminates. Using the command
 - `)`: End the parentheses block
 - `!`: Move IP to random position in current line
 
+It can recieve integer input which is automatically set to the accumulator. If no input or invalid input is given accumulator defaults to 0.
+
 *It is still remaining some development. Core interpreter is ready. Online interpreter and Debugger features are coming soon!**
