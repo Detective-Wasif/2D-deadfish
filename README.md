@@ -50,7 +50,7 @@ But sadly IP has hit the EOF token. So the program terminates. Using the command
 - `~`: Reset accumulator to 0
 - `{`: Execute commands inside brace block 10 times
 - `}`: End the brace block
-- `(`: Execute commands inside the parentheses block if accumulator is 0
+- `(`: Execute commands inside the parentheses block if accumulator is 0, and if not push the IP to the end of the parentheses block
 - `)`: End the parentheses block
 - `!`: Move IP to random position in current line
 
