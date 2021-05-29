@@ -42,7 +42,8 @@ But sadly IP has hit the EOF token. So the program terminates. Using the command
 - `i`: Increment accumulator
 - `o`: Print accumulator as digit without trailing newline
 - `d`: Decrement accumulator
-- `c`: Square accumulator
+- `s`: Square accumulator
+- `c`: Print accumulator as character without trailing newline
 - `w`: Print 'Hello, World!' without traling newline
 - `h`: Terminate
 - `<`: Change IP direction to left
