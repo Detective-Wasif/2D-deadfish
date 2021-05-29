@@ -1,6 +1,8 @@
 # 2D-deadfish
 2D version of Deadfish~ esolang made by Wasif
 
+# Introduction
+
 It just adds some fancy 2D language features on top of traditional Deadfish~.
 
 Imagine a normal program `io`. It increments accumulator, outputs it and terminates. Here's an elaboration how the interpreter reads the program.
@@ -57,7 +59,10 @@ But sadly IP has hit the EOF token. So the program terminates. Using the command
 It can recieve integer input which is automatically set to the accumulator. If no input or invalid input is given accumulator defaults to 0.
 
 # Examples
-
+**Hello, World!**
+```
+w
+```
 **Truth machine**
 ```
 (o^)>o<
