@@ -30,7 +30,7 @@ p,h1 {
   }
   while(token = prog[y]&&prog[y][x]){
     if(token in commands && execute){
-      for(_=0;_<times*!'(){}'.includes(token);_++) eval(commands[token])
+      for(_=0;_<('(){}'.includes(token)?1:times);_++) eval(commands[token])
     }
     switch(dir){
       case 0: x++; break;
