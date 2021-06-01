@@ -1,0 +1,106 @@
+<html>
+<head>
+<style>
+p,h1 {
+ font-family:arial,helvetica;
+}
+</style>
+<script>
+  function interpret(str, input, output){
+  var acc = input, x = 0, y = 0, n = 0, dir = 0, times = 1, execute = true;
+  var prog = str.split`\n`;
+  var commands = {
+    'i':"acc++",
+		'o':"output(acc)",
+		'd':"acc--",
+		'c':"output(String.fromCharCode(acc))",
+		's':"acc**=2",
+		'w':"output('Hello, World!')",
+		'h':"return;",
+		'<':"dir=2",
+		'>':"dir=0",
+		'^':"dir=3",
+		'v':"dir=1",
+		'~':"acc=0",
+		'{':"times*=10",
+		'}':"times/=10",
+		'(':"dir=0;execute=!acc",
+		')':"execute=true",
+		'!':"x=~~(Math.random() * prog[y].length)"
+  }
+  while(token = prog[y]&&prog[y][x]){
+    if(token in commands && execute){
+      for(_=0;_<times*!'(){}'.includes(token);_++) eval(commands[token])
+    }
+    switch(dir){
+      case 0: x++; break;
+      case 1: y++; break;
+      case 2: x--; break;
+      case 3: y--; break;
+    }
+  }
+}
+function run(){
+var out = ''
+interpret(document.getElementById('code').value,document.getElementById('input').value,x=>out+=x)
+    document.getElementById('out').value = out
+}
+    
+    function length(){
+        code = document.getElementById('code').value
+        const codepage = "iodcswh<>^v!~(){} \n"
+        bytes = 0
+        chars = 0 
+        for (let x of code){
+            if (codepage.includes(x)){
+                bytes++
+                chars++
+            } else {
+                bytes += 2
+                chars++
+            }
+        }
+        return bytes + " bytes, " + chars + " chars, (SBCS)"
+    }
+    function load(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        code = decodeURIComponent(urlParams.get('data'))
+        if (code != 'null'){
+            document.getElementById('code').value = code
+        }
+        document.getElementById('len').innerHTML=length()
+    }
+    function permalink(){
+        code = document.getElementById('code').value
+        hold = document.getElementById('out')
+        hold.innerHTML = 'http://2ddeadfish.pythonanywhere.com/?data='+encodeURIComponent(code)
+    }
+    function submission(){
+        code = document.getElementById('code').value
+        hold = document.getElementById('out')
+        submission_ = "[2D Deadfish](https://github.com/Detective-Wasif/2D-deadfish), " + length() + "\n"
+        submission_ += "```\n"
+        submission_ += code + "\n"
+        submission_ += "```\n\n"
+        submission_ += "[Try it online!](" + 'http://2ddeadfish.pythonanywhere.com/?data='+encodeURIComponent(code) + ")\n"
+        hold.innerHTML = submission_
+    }
+</script>
+<body onload="load()">
+<h1><a href="https://github.com/Detective-Wasif/2D-deadfish">2D Deadfish</a></h1>
+<b>Code</b><br />
+<textarea name='code_' id='code' rows=10 cols=40 value='' onkeydown="document.getElementById('len').innerHTML=length()" onpaste="document.getElementById('len').innerHTML=length()" oninput="document.getElementById('len').innerHTML=length()"></textarea><br/>
+<b>Input</b><br />
+<input name='input_' type="text" value="" id="input"/>
+<br/><br/>
+<span id="len"></span><br/><br/>
+<input type="submit" value="Run!"/>
+<input type="button" value="Permalink" onclick="permalink()"/>
+<input type="button" value="Generate CGCC submission" onclick="submission()"/>
+<pre>
+<span id="out">
+</span>
+</pre>
+</body>
+</html>
