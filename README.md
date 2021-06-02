@@ -1,6 +1,8 @@
 # 2D-deadfish
 2D version of Deadfish~ esolang made by Wasif
 
+PPCG user @AUsername has done a great contribution regarding web JS interpreter. Wholeheartedly thanks to them!
+
 # Introduction
 
 It just adds some fancy 2D language features on top of traditional Deadfish~.
