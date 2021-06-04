@@ -7,7 +7,7 @@ p,h1 {
 </style>
 <script>
   function interpret(str, input, output){
-  var acc = input, x = 0, y = 0, n = 0, dir = 0, times = 1, execute = true;
+  var acc = input || 0, x = 0, y = 0, n = 0, dir = 0, times = 1, execute = true;
   var prog = str.split`\n`;
   var commands = {
     'i':"acc++",
